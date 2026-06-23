@@ -98,14 +98,13 @@ export class LoginComponent {
       return;
     }
     this.loading = true;
-    setTimeout(() => {
-      const ok = this.auth.login(this.username, this.password);
+    this.auth.login(this.username, this.password).subscribe(ok => {
       this.loading = false;
       if (ok) {
         this.router.navigate(['/tasks']);
       } else {
         this.error = 'Invalid credentials';
       }
-    }, 600);
+    });
   }
 }

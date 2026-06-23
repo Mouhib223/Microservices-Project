@@ -3,7 +3,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-RUN npm run build
+RUN ./node_modules/.bin/nest build
 
 FROM node:20-alpine
 WORKDIR /app

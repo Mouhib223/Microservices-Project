@@ -3,6 +3,11 @@ import { inject } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
+  // Don't attach token to Keycloak token endpoint requests
+  if (req.url.includes('/realms/') && req.url.includes('/protocol/openid-connect/token')) {
+    return next(req);
+  }
+
   const auth = inject(AuthService);
   const token = auth.getToken();
   if (token) {

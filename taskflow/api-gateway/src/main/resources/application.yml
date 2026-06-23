@@ -21,14 +21,14 @@ spring:
           predicates:
             - Path=/api/tasks/**
         - id: comment-service
-          uri: lb://comment-service
+          uri: http://comment-service:3000
           predicates:
             - Path=/api/comments/**
   security:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: ${KEYCLOAK_ISSUER:http://localhost:8080/realms/TaskFlow}
+          jwk-set-uri: ${KEYCLOAK_ISSUER:http://localhost:8080/realms/TaskFlow}/protocol/openid-connect/certs
 
 eureka:
   client:
