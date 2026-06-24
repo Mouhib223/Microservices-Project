@@ -83,12 +83,14 @@ services:
   keycloak:
     image: quay.io/keycloak/keycloak:23.0.3
     container_name: tf-keycloak
-    command: start-dev
+    command: start-dev --import-realm
     environment:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
     ports:
       - "8080:8080"
+    volumes:
+      - ./keycloak/taskflow-realm.json:/opt/keycloak/data/import/taskflow-realm.json:ro
     networks:
       - taskflow-net
 

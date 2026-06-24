@@ -1,0 +1,48 @@
+{
+  "realm": "TaskFlow",
+  "enabled": true,
+  "registrationAllowed": true,
+  "clients": [
+    {
+      "clientId": "taskflow-frontend",
+      "name": "TaskFlow Frontend",
+      "enabled": true,
+      "publicClient": true,
+      "directAccessGrantsEnabled": true,
+      "standardFlowEnabled": true,
+      "redirectUris": ["http://localhost:4200/*"],
+      "webOrigins": ["http://localhost:4200"],
+      "protocol": "openid-connect"
+    }
+  ],
+  "users": [
+    {
+      "username": "user1",
+      "email": "user1@taskflow.dev",
+      "enabled": true,
+      "firstName": "John",
+      "lastName": "Doe",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "user1pass",
+          "temporary": false
+        }
+      ]
+    },
+    {
+      "username": "testuser",
+      "email": "testuser@taskflow.dev",
+      "enabled": true,
+      "firstName": "Test",
+      "lastName": "User",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password",
+          "temporary": false
+        }
+      ]
+    }
+  ]
+}
